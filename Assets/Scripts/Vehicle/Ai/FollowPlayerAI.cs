@@ -16,11 +16,10 @@ public class FollowPlayerAI : VehicleController
 
     void Update()
     {
-        Vector3 lookPos = playerVehicle.transform.position - myVehicle.transform.position;
-        Debug.Log(lookPos);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
-
-        SetTurnDirection(Mathf.Clamp(lookPos.x, -1, 1));
-        //SetForwardSpeed(1);
+        //get position of player in localspace relative to AI vehicle
+        Vector3 lookPos = myVehicle.transform.InverseTransformPoint(playerVehicle.transform.position);
+        
+        SetTurnDirection(Mathf.Clamp(lookPos.x, -1, 1));    //always look towards player
+        SetForwardSpeed(Mathf.Clamp((lookPos.z-10)/10, -1, 1)); //try to always be 10 units away from player
     }
 }
