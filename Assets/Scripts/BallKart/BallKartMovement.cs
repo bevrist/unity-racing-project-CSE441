@@ -1,13 +1,20 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class BallKartMovement : MonoBehaviour
 {
     public float turnSpeed = 80;
     public float speed = 10;
 
+    // variables meant to be accessed by controller script
+    //public float turnDirection = 0;
+    //public float moveVertical = 0;
+
     private Rigidbody rb;
 
+    // create sphere to simulate physics on, adjust some paramaters of sphere, and store Rigidbody in variable
     void Start()
     {
         GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -19,7 +26,7 @@ public class BallKartMovement : MonoBehaviour
     void Update()
     {
         float turnDirection = Input.GetAxis("Horizontal");
-        transform.position = rb.transform.position;
+        transform.position = rb.transform.position; //make body "stick" to sphere position
         transform.Rotate(new Vector3(0, turnDirection * turnSpeed * Time.deltaTime, 0), Space.Self);
     }
 
@@ -30,6 +37,8 @@ public class BallKartMovement : MonoBehaviour
     }
 
 
+#if UNITY_EDITOR
+    // draw representation for sphere size and forward direction (editor only)
     [DrawGizmo(GizmoType.Selected | GizmoType.NonSelected)]
     static void drawGizmo2(BallKartMovement kart, GizmoType gizmoType)
     {
@@ -40,4 +49,5 @@ public class BallKartMovement : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawLine(position, kart.transform.forward * 1.5f + kart.transform.position);
     }
+#endif
 }
