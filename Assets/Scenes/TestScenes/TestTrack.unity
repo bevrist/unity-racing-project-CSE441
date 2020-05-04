@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73623fa33bd65ca49aacf8c7944a2298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetVehicle: {fileID: 967273548}
+  myVehicle: {fileID: 967273548}
 --- !u!4 &71705198
 Transform:
   m_ObjectHideFlags: 0
@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca17feef0fdfbc34baa94b85981adc6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetVehicle: {fileID: 2049312528}
+  myVehicle: {fileID: 2049312528}
 --- !u!114 &71705200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e29a6157ee344541b167577d6efced1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetVehicle: {fileID: 1807350918}
+  myVehicle: {fileID: 1807350918}
 --- !u!114 &71705201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48457f7cf354f364ca5db6bbca711732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetVehicle: {fileID: 1630421867}
+  myVehicle: {fileID: 1630421867}
 --- !u!1 &234389900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,6 +1115,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ai BallKart 3
       objectReference: {fileID: 0}
+    - target: {fileID: 279870372689515589, guid: 49bef55bcb6e097409e1b266925f2eed,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49bef55bcb6e097409e1b266925f2eed, type: 3}
 --- !u!1 &1630421867 stripped
@@ -1189,6 +1194,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ai BallKart 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 279870372689515589, guid: 49bef55bcb6e097409e1b266925f2eed,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49bef55bcb6e097409e1b266925f2eed, type: 3}

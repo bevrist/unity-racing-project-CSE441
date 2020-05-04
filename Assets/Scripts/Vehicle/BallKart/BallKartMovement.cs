@@ -3,7 +3,7 @@
 using UnityEditor;
 #endif
 
-public class BallKartMovement : MonoBehaviour, VehicleControllable
+public class BallKartMovement : MonoBehaviour, IVehicleControllable
 {
     public float turnSpeed = 80;
     public float speed = 10;
