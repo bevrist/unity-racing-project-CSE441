@@ -10,7 +10,7 @@ public class SimpleCameraFollow : MonoBehaviour
 	public bool smoothRotation = true;
 	public float rotationDamping = 10.0f;
 
-	void Update()
+	void LateUpdate()
 	{
 		Vector3 wantedPosition = target.TransformPoint(0, height, -distance);
 		transform.position = Vector3.Lerp(transform.position, wantedPosition, Time.deltaTime * damping);
@@ -20,7 +20,9 @@ public class SimpleCameraFollow : MonoBehaviour
 			Quaternion wantedRotation = Quaternion.LookRotation(target.position - transform.position, target.up);
 			transform.rotation = Quaternion.Slerp(transform.rotation, wantedRotation, Time.deltaTime * rotationDamping);
 		}
-
-		else transform.LookAt(target, target.up);
+		else
+		{
+			transform.LookAt(target, target.up);
+		}
 	}
 }
