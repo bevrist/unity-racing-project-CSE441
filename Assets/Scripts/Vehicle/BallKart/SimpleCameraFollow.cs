@@ -4,9 +4,9 @@ using System.Collections;
 public class SimpleCameraFollow : MonoBehaviour
 {
 	public Transform target;
-	public float distance = 3.0f;
+	public float distance = 5.0f;
 	public float height = 3.0f;
-	public float damping = 5.0f;
+	public float damping = 10.0f;
 	public bool smoothRotation = true;
 	public float rotationDamping = 10.0f;
 
