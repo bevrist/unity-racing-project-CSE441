@@ -8675,7 +8675,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 844a1e2404aa348adabf4e3c3633b93a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpoints: []
+  checkpoints:
+  - {fileID: 1827658953}
+  - {fileID: 293765429}
+  - {fileID: 1895430043}
+  - {fileID: 2065356317}
 --- !u!114 &1565059292
 MonoBehaviour:
   m_ObjectHideFlags: 0
