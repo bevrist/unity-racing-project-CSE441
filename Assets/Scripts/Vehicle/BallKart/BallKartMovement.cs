@@ -6,7 +6,9 @@ using UnityEditor;
 public class BallKartMovement : MonoBehaviour, IVehicleControllable
 {
     public float turnSpeed = 80;
-    public float speed = 10;
+    public float maxSpeed = 10;
+
+    private float currentMaxSpeed;
 
     // variables meant to be accessed by controller script
     private float turnDirection = 0;
@@ -20,6 +22,7 @@ public class BallKartMovement : MonoBehaviour, IVehicleControllable
         sphere.transform.position = transform.position;
         rb = sphere.AddComponent(typeof(Rigidbody)) as Rigidbody;
         sphere.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
+        currentMaxSpeed = maxSpeed;
     }
 
     void Update()
@@ -27,12 +30,26 @@ public class BallKartMovement : MonoBehaviour, IVehicleControllable
         //float turnDirection = Input.GetAxis("Horizontal");
         transform.position = rb.transform.position; //make body "stick" to sphere position
         transform.Rotate(new Vector3(0, turnDirection * turnSpeed * Time.deltaTime, 0), Space.Self);
+
+        RaycastHit hit;
+        //check tag of floor vehicle is over and apply speed changes
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 2))
+        {
+            if (hit.collider.gameObject.tag == "Slow")
+            {
+                currentMaxSpeed = maxSpeed / 2;
+            }
+            else
+            {
+                currentMaxSpeed = maxSpeed;
+            }
+        }
     }
 
     void FixedUpdate()
     {
         //float forwardSpeed = Input.GetAxis("Vertical");
-        rb.AddForce(transform.forward * speed * forwardSpeed);
+        rb.AddForce(transform.forward * currentMaxSpeed * forwardSpeed);
     }
 
     //========== VehicleControllable Interface implementation ==========
