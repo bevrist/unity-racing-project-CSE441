@@ -420,10 +420,20 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 25140d7d7daf7374fb2200f792df1f47,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 25140d7d7daf7374fb2200f792df1f47,
         type: 3}
       propertyPath: m_Name
       value: track-1
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 25140d7d7daf7374fb2200f792df1f47,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25140d7d7daf7374fb2200f792df1f47, type: 3}
@@ -731,7 +741,7 @@ GameObject:
   - component: {fileID: 1703851250}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Slow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
