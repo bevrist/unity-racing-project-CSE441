@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BallKartMovement : MonoBehaviour
+/*public class BallKartMovement: MonoBehaviour
 {
     private bool player = true;
 
@@ -9,7 +9,7 @@ public class BallKartMovement : MonoBehaviour
     public float turnSpeed = 50;
     public float speed = 10;
 
-    private void Start()
+    /*private void Start()
     {
         if (gameObject.GetComponent<AIController>())
             player = false;
@@ -39,4 +39,4 @@ public class BallKartMovement : MonoBehaviour
     {
         rb.AddForce(transform.forward * speed * vertical);
     }
-}
+}*/
