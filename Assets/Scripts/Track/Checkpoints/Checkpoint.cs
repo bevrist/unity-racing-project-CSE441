@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [ExecuteInEditMode]
 public class Checkpoint : MonoBehaviour
@@ -29,12 +30,26 @@ public class Checkpoint : MonoBehaviour
     {
         leftCheckpointObject = transform.GetChild(0).gameObject;
         rightCheckpointObject = transform.GetChild(1).gameObject;
+
         leftCheckpointObject.transform.position = transform.position + transform.right * -1 * (checkpointWidth / 2);
         rightCheckpointObject.transform.position = transform.position + transform.right * (checkpointWidth / 2);
+
         Debug.DrawLine(leftCheckpointObject.transform.position, (transform.up * 3f) + leftCheckpointObject.transform.position, Color.green);
         Debug.DrawLine(rightCheckpointObject.transform.position, (transform.up * 3f) + rightCheckpointObject.transform.position, Color.blue);
+
         triggerMesh = transform.GetChild(2).gameObject;
         triggerMesh.transform.localPosition = new Vector3(0,1.5f,0);
         triggerMesh.transform.localScale = new Vector3(checkpointWidth, 3.0f, 0.2f);
     }
+
+    //event dispatcher for whenever checkpoint is triggered by another object
+    public event Action onCheckpointTriggered;
+    public void CheckpointTriggered()   //TODO FIXME can this return the collider?
+    {
+        if (onCheckpointTriggered != null)
+        {
+            onCheckpointTriggered();
+        }
+    }
+
 }
