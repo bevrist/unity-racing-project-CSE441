@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-public class BallKartMovement : MonoBehaviour, IVehicleControllable, ICheckpointSystem
+public class BallKartMovement : MonoBehaviour, IVehicleControllable, ICheckpointSystemVehicle
 {
     public float turnSpeed = 80;
     public float maxSpeed = 10;

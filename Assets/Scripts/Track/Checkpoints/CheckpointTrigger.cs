@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//this is attached to the checkpoint, dispatches Checkpoint.CheckPointTriggered() event
 public class CheckpointTrigger : MonoBehaviour
 {
     private Checkpoint checkpointObject;
