@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CheckpointTrigger : MonoBehaviour
 {
-    private Checkpoint triggerEventReference;
+    private Checkpoint checkpointObject;
 
     private void Start()
     {
-        triggerEventReference = gameObject.transform.parent.GetComponent<Checkpoint>();
+        checkpointObject = gameObject.transform.parent.GetComponent<Checkpoint>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        triggerEventReference.CheckpointTriggered();
+        checkpointObject.CheckpointTriggered(other);
     }
 }

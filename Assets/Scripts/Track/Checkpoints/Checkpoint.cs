@@ -37,18 +37,18 @@ public class Checkpoint : MonoBehaviour
         Debug.DrawLine(leftCheckpointObject.transform.position, (transform.up * 3f) + leftCheckpointObject.transform.position, Color.green);
         Debug.DrawLine(rightCheckpointObject.transform.position, (transform.up * 3f) + rightCheckpointObject.transform.position, Color.blue);
 
-        triggerMesh = transform.GetChild(2).gameObject;
+        triggerMesh = transform.GetChild(2).gameObject; //get box collider trigger child
         triggerMesh.transform.localPosition = new Vector3(0,1.5f,0);
         triggerMesh.transform.localScale = new Vector3(checkpointWidth, 3.0f, 0.2f);
     }
 
-    //event dispatcher for whenever checkpoint is triggered by another object
-    public event Action onCheckpointTriggered;
-    public void CheckpointTriggered()   //TODO FIXME can this return the collider?
+    //event dispatcher for whenever checkpoint is triggered by an object
+    public event Action<Collider> onCheckpointTriggered;
+    public void CheckpointTriggered(Collider collider)
     {
         if (onCheckpointTriggered != null)
         {
-            onCheckpointTriggered();
+            onCheckpointTriggered(collider);
         }
     }
 

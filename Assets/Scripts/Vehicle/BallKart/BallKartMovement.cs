@@ -3,7 +3,7 @@
 using UnityEditor;
 #endif
 
-public class BallKartMovement : MonoBehaviour, IVehicleControllable
+public class BallKartMovement : MonoBehaviour, IVehicleControllable, ICheckpointSystem
 {
     public float turnSpeed = 80;
     public float maxSpeed = 10;
@@ -23,6 +23,11 @@ public class BallKartMovement : MonoBehaviour, IVehicleControllable
         rb = sphere.AddComponent(typeof(Rigidbody)) as Rigidbody;
         sphere.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
         currentMaxSpeed = maxSpeed;
+
+        // add all components of vehicle to empty game object so that they are grouped together
+        GameObject parentObj = new GameObject(gameObject.name);
+        gameObject.transform.parent = parentObj.transform;
+        rb.transform.parent = parentObj.transform;
     }
 
     void Update()
@@ -63,6 +68,13 @@ public class BallKartMovement : MonoBehaviour, IVehicleControllable
         this.forwardSpeed = Mathf.Clamp(forwardSpeed, -1, 1);
     }
     //========== END VehicleControllable Interface implementation ==========
+
+    //========== CheckpointSystem Interface implementation ==========
+    public GameObject GetColliderGameObject()
+    {
+        return rb.gameObject;
+    }
+    //========== END CheckpointSystem Interface implementation ==========
 
 
 #if UNITY_EDITOR

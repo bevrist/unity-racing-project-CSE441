@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 279870372689515585}
   - component: {fileID: 279870372689515584}
   - component: {fileID: 279870372689515590}
+  - component: {fileID: 8630175053359071328}
   m_Layer: 0
   m_Name: BallKart
   m_TagString: Untagged
@@ -93,4 +94,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnSpeed: 80
-  speed: 10
+  maxSpeed: 10
+--- !u!114 &8630175053359071328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279870372689515589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e16c3cd342e480186c53bf357ec0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCheckpointTarget: {fileID: 0}
+  currentCheckpointInt: 0
