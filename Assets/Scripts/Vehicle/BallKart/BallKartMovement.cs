@@ -8,6 +8,8 @@ public class BallKartMovement : MonoBehaviour, IVehicleControllable, ICheckpoint
     public float turnSpeed = 80;
     public float maxSpeed = 10;
 
+    public ParticleSystem rocketParticles;
+
     private float currentMaxSpeed;
 
     // variables meant to be accessed by controller script
@@ -22,6 +24,7 @@ public class BallKartMovement : MonoBehaviour, IVehicleControllable, ICheckpoint
         sphere.transform.position = transform.position;
         rb = sphere.AddComponent(typeof(Rigidbody)) as Rigidbody;
         sphere.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
+        sphere.GetComponent<MeshRenderer>().enabled = false;
         currentMaxSpeed = maxSpeed;
 
         // add all components of vehicle to empty game object so that they are grouped together
@@ -66,6 +69,12 @@ public class BallKartMovement : MonoBehaviour, IVehicleControllable, ICheckpoint
     public void SetForwardSpeed(float forwardSpeed)
     {
         this.forwardSpeed = Mathf.Clamp(forwardSpeed, -1, 1);
+        if (forwardSpeed > 0) { //enable and disable particle effect
+            rocketParticles.enableEmission = true;
+        }
+        else {
+            rocketParticles.enableEmission = false;
+        }
     }
     //========== END VehicleControllable Interface implementation ==========
 
