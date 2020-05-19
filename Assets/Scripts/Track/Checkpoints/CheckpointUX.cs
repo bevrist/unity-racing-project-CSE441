@@ -4,25 +4,38 @@ using UnityEngine;
 
 public class CheckpointUX : MonoBehaviour
 {
-    // spawn particles on active checkpoint
-    //have gui with lap counter?
-
-    private CheckpointSystemVehicle playerCS;   //ref to checkpoint system on player
     [Tooltip("the prefab that will be spawned on active checkpoints so player can see it")]
     public GameObject activeCheckpointMarker;   //the prefab that will be spawned on active checkpoints so player can see it
+
+    private CheckpointSystemVehicle playerCS;   //ref to checkpoint system on player
+    private GameObject leftCheckpointMarker;
+    private GameObject rightCheckpointMarker;
 
     void Start()
     {
         playerCS = GameObject.FindGameObjectWithTag("Player").GetComponent<CheckpointSystemVehicle>();
-        if (playerCS == null) { Debug.LogError("Player vehicle does not implement CheckpointSystemVehicle!", gameObject); }
+        if (playerCS == null) { Debug.LogError("Player vehicle does not implement CheckpointSystemVehicle!", gameObject); return; }
 
+        leftCheckpointMarker = Instantiate(activeCheckpointMarker, playerCS.currentCheckpointTarget.leftCheckpointObject.transform);
+        rightCheckpointMarker = Instantiate(activeCheckpointMarker, playerCS.currentCheckpointTarget.rightCheckpointObject.transform);
+
+        CheckpointSystemVehicle.onCheckpointTriggeredByPlayer += PlayerUX;
     }
 
-    void MoveCheckpointParticles(Checkpoint cp)
+    void PlayerUX() {
+        MoveCheckpointParticles();
+        LapCounter();
+    }
+
+    void MoveCheckpointParticles()
     {
-        //spawn prefab if non existant, move prefab if exists
+        leftCheckpointMarker.transform.position = playerCS.currentCheckpointTarget.leftCheckpointObject.transform.position;
+        rightCheckpointMarker.transform.position = playerCS.currentCheckpointTarget.rightCheckpointObject.transform.position;
 
     }
 
-    //gui with arrow?
+    void LapCounter(){
+        //this can be used to update the lap counter gui or whatever
+        Debug.Log("Laps: " + playerCS.currentLapNumber + " CP: " + playerCS.currentCheckpointInt);
+    }
 }

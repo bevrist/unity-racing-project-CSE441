@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 //picks up list of checkpoints from static Checkpoints object, requires CheckpointEditor to be present in level
 //attach this to vehicle which implements ICheckpointSystem
@@ -11,7 +12,7 @@ public class CheckpointSystemVehicle : MonoBehaviour
     public int currentCheckpointInt;    //corresponds with Checkpoints.list for currentCheckpoint
     public int currentLapNumber = 0;    //counts the number of laps the player has made
 
-    private ICheckpointSystemVehicle vehicleCS;    //reference to player vehicle witch has IcheckPointSystem implemented
+    private ICheckpointSystemVehicle vehicleCS;    //reference to player vehicle witch has ICheckPointSystem implemented
 
     void Start()
     {
@@ -27,7 +28,16 @@ public class CheckpointSystemVehicle : MonoBehaviour
         {
             currentCheckpointInt = -1;
         }
+    }
 
+    //event dispatcher for whenever checkpoint is triggered by the player
+    public static event Action onCheckpointTriggeredByPlayer;
+    public static void CheckpointTriggeredByPlayer()
+    {
+        if (onCheckpointTriggeredByPlayer != null)
+        {
+            onCheckpointTriggeredByPlayer();
+        }
     }
 
     void OnCheckpointTriggered(Collider collider)
@@ -48,5 +58,10 @@ public class CheckpointSystemVehicle : MonoBehaviour
         currentCheckpointInt++;
         Checkpoints.list[currentCheckpointInt].onCheckpointTriggered += OnCheckpointTriggered;
         currentCheckpointTarget = Checkpoints.list[currentCheckpointInt];
+
+        //call dispatcher for player triggering checkpoint
+        if (gameObject.tag == "Player") {
+            CheckpointTriggeredByPlayer();
+        }
     }
 }

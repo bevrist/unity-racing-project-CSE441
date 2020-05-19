@@ -21,7 +21,7 @@ public class Checkpoint : MonoBehaviour
     public GameObject rightCheckpointObject;
     GameObject triggerMesh;
 
-    void Start()
+    void Awake()
     {
         CalculateCheckpointPoisitions();
     }
