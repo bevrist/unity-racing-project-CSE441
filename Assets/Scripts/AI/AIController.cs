@@ -10,6 +10,8 @@ public class AIController : VehicleController
     private int cCheckpoint = 0;
     private NavMeshPath path = new NavMeshPath();
 
+    public float currentSpeed;
+    public float maxSpeed = 5.0f;
     public GameObject[] checkpoints;
 
     void Start()
@@ -36,6 +38,18 @@ public class AIController : VehicleController
             //SetPath(myVehicle.transform.position, checkpoints[cCheckpoint].transform.position);
         }
 
+        if (Physics.Raycast(myVehicle.transform.position, Vector3.down, out RaycastHit hit, 2))
+        {
+            if (hit.collider.gameObject.tag == "Slow")
+            {
+                currentSpeed = maxSpeed / 2;
+            }
+            else
+            {
+                currentSpeed = maxSpeed;
+            }
+        }
+
         /*Debug.Log("Location: " + agent.path.corners[0]);
         Debug.Log(Quaternion.Lerp(myVehicle.transform.rotation, Quaternion.LookRotation(agent.path.corners[0] - myVehicle.transform.position), 5.0f * Time.deltaTime).eulerAngles);
         if (Quaternion.Lerp(myVehicle.transform.rotation, Quaternion.LookRotation(agent.path.corners[0] - myVehicle.transform.position), 5.0f * Time.deltaTime).eulerAngles.y <= 160.0f)
@@ -47,7 +61,7 @@ public class AIController : VehicleController
             Debug.Log("Turning Right");
             SetTurnDirection(10.0f);
         }*/
-        SetForwardSpeed(5.0f);
+        SetForwardSpeed(currentSpeed);
     }
 
     void SetPath(Vector3 Current, Vector3 Destination)
