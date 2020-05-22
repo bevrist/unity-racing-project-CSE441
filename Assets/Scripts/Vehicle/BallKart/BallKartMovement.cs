@@ -8,7 +8,7 @@ public class BallKartMovement : MonoBehaviour, IVehicleControllable, ICheckpoint
     public float turnSpeed = 80;
     public float maxSpeed = 10;
 
-    public ParticleSystem rocketParticles;
+    public ParticleSystem rocketParticles;  //particle effect to be used as trail
 
     private float currentMaxSpeed;
 
@@ -35,13 +35,15 @@ public class BallKartMovement : MonoBehaviour, IVehicleControllable, ICheckpoint
 
     void Update()
     {
-        //float turnDirection = Input.GetAxis("Horizontal");
         transform.position = rb.transform.position; //make body "stick" to sphere position
         transform.Rotate(new Vector3(0, turnDirection * turnSpeed * Time.deltaTime, 0), Space.Self);
 
-        RaycastHit hit;
+        //enable and disable particle effect
+        ParticleSystem.EmissionModule em = rocketParticles.emission;
+        em.enabled = (forwardSpeed > 0) ? true : false; //enable when forwardSpeed > 0
+
         //check tag of floor vehicle is over and apply speed changes
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 2))
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2))
         {
             if (hit.collider.gameObject.tag == "Slow")
             {
@@ -56,7 +58,6 @@ public class BallKartMovement : MonoBehaviour, IVehicleControllable, ICheckpoint
 
     void FixedUpdate()
     {
-        //float forwardSpeed = Input.GetAxis("Vertical");
         rb.AddForce(transform.forward * currentMaxSpeed * forwardSpeed);
     }
 
@@ -69,14 +70,6 @@ public class BallKartMovement : MonoBehaviour, IVehicleControllable, ICheckpoint
     public void SetForwardSpeed(float forwardSpeed)
     {
         this.forwardSpeed = Mathf.Clamp(forwardSpeed, -1, 1);
-        if (forwardSpeed > 0) { //enable and disable particle effect
-            ParticleSystem.EmissionModule em = rocketParticles.emission;
-            em.enabled = true;
-        }
-        else {
-            ParticleSystem.EmissionModule em = rocketParticles.emission;
-            em.enabled = false;
-        }
     }
     //========== END VehicleControllable Interface implementation ==========
 
