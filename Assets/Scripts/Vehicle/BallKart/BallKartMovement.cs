@@ -70,10 +70,12 @@ public class BallKartMovement : MonoBehaviour, IVehicleControllable, ICheckpoint
     {
         this.forwardSpeed = Mathf.Clamp(forwardSpeed, -1, 1);
         if (forwardSpeed > 0) { //enable and disable particle effect
-            rocketParticles.enableEmission = true;
+            ParticleSystem.EmissionModule em = rocketParticles.emission;
+            em.enabled = true;
         }
         else {
-            rocketParticles.enableEmission = false;
+            ParticleSystem.EmissionModule em = rocketParticles.emission;
+            em.enabled = false;
         }
     }
     //========== END VehicleControllable Interface implementation ==========
