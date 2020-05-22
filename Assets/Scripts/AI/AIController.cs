@@ -20,25 +20,23 @@ public class AIController : VehicleController
 
     void Update()
     {
-        if (Vector3.Distance(myVehicle.transform.position, agent.path.corners[0]) <= 5.0f)
+        if (Vector3.Distance(myVehicle.transform.position, checkpoints[cCheckpoint].transform.position) <= 3.0f)
         {
-            if (Vector3.Distance(myVehicle.transform.position, checkpoints[cCheckpoint].transform.position) <= 10.0f)
-            {
-                Debug.Log("Changing checkpoints: " + cCheckpoint);
-                cCheckpoint++;
-                if (cCheckpoint >= checkpoints.Length)
-                    cCheckpoint = 0;
-                //cPath = 0;
-                SetPath(myVehicle.transform.position, checkpoints[cCheckpoint].transform.position);
-            }
-            else
-            {
-                Debug.Log("Changing Corner");
-                //cPath++;
-                SetPath(myVehicle.transform.position, checkpoints[cCheckpoint].transform.position);
-            }
+            Debug.Log("Changing checkpoints: " + cCheckpoint);
+            cCheckpoint++;
+            if (cCheckpoint >= checkpoints.Length)
+                cCheckpoint = 0;
+            //cPath = 0;
+            SetPath(myVehicle.transform.position, checkpoints[cCheckpoint].transform.position);
+        }
+        else
+        {
+            Debug.Log("Changing Corner");
+            cPath++;
+            //SetPath(myVehicle.transform.position, checkpoints[cCheckpoint].transform.position);
         }
 
+        /*Debug.Log("Location: " + agent.path.corners[0]);
         Debug.Log(Quaternion.Lerp(myVehicle.transform.rotation, Quaternion.LookRotation(agent.path.corners[0] - myVehicle.transform.position), 5.0f * Time.deltaTime).eulerAngles);
         if (Quaternion.Lerp(myVehicle.transform.rotation, Quaternion.LookRotation(agent.path.corners[0] - myVehicle.transform.position), 5.0f * Time.deltaTime).eulerAngles.y <= 160.0f)
         {
@@ -48,8 +46,8 @@ public class AIController : VehicleController
         {
             Debug.Log("Turning Right");
             SetTurnDirection(10.0f);
-        }
-        //SetForwardSpeed(5.0f);
+        }*/
+        SetForwardSpeed(5.0f);
     }
 
     void SetPath(Vector3 Current, Vector3 Destination)
