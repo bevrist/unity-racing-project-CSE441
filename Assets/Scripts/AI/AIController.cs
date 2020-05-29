@@ -8,7 +8,7 @@ public class AIController : VehicleController
     private NavMeshAgent agent;
     private int cPath = 0;
     private int cCheckpoint = 0;
-    private NavMeshPath path = new NavMeshPath();
+    private NavMeshPath path;
 
     public float currentSpeed;
     public float maxSpeed = 5.0f;
@@ -18,6 +18,7 @@ public class AIController : VehicleController
     {
         agent = myVehicle.GetComponent<NavMeshAgent>();
         SetPath(myVehicle.transform.position, checkpoints[cCheckpoint].transform.position);
+        path = new NavMeshPath();
     }
 
     void Update()
