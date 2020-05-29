@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 159264193}
   - component: {fileID: 159264194}
   m_Layer: 0
-  m_Name: Empty Object That Holds Player And AI Input controllers
+  m_Name: AIController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,8 +165,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myVehicle: {fileID: 600565600}
+<<<<<<< Updated upstream
+=======
   currentSpeed: 0
   maxSpeed: 5
+  turnSpeed: 5
+>>>>>>> Stashed changes
   checkpoints:
   - {fileID: 1211640825}
   - {fileID: 523390393}
@@ -318,7 +322,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &408345300
 Transform:
@@ -1489,12 +1493,16 @@ PrefabInstance:
     - target: {fileID: 2271989782719606928, guid: 2c72ad4cd21b140ba80e8fea2456d499,
         type: 3}
       propertyPath: m_Speed
-      value: 3.5
+<<<<<<< Updated upstream
+      value: 3
+=======
+      value: 0
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 3255155076147780968, guid: 2c72ad4cd21b140ba80e8fea2456d499,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.59
       objectReference: {fileID: 0}
     - target: {fileID: 3255155076147780968, guid: 2c72ad4cd21b140ba80e8fea2456d499,
         type: 3}
@@ -1509,22 +1517,22 @@ PrefabInstance:
     - target: {fileID: 3255155076147780968, guid: 2c72ad4cd21b140ba80e8fea2456d499,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3255155076147780968, guid: 2c72ad4cd21b140ba80e8fea2456d499,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.47742608
+      value: 0.09845133
       objectReference: {fileID: 0}
     - target: {fileID: 3255155076147780968, guid: 2c72ad4cd21b140ba80e8fea2456d499,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3255155076147780968, guid: 2c72ad4cd21b140ba80e8fea2456d499,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.87867194
+      value: 0.99514186
       objectReference: {fileID: 0}
     - target: {fileID: 3255155076147780968, guid: 2c72ad4cd21b140ba80e8fea2456d499,
         type: 3}
@@ -1539,7 +1547,7 @@ PrefabInstance:
     - target: {fileID: 3255155076147780968, guid: 2c72ad4cd21b140ba80e8fea2456d499,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -57.035004
+      value: 11.3
       objectReference: {fileID: 0}
     - target: {fileID: 3255155076147780968, guid: 2c72ad4cd21b140ba80e8fea2456d499,
         type: 3}
