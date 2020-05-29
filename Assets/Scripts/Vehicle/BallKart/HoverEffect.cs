@@ -15,7 +15,10 @@ public class HoverEffect : MonoBehaviour
 
     void Update()
     {
-        gameObject.transform.Translate(new Vector3(0,0,Mathf.Sin(Time.time + offset) * distance));
-        offset += speed;
+        if (Time.timeScale != 0)
+        {
+            gameObject.transform.Translate(new Vector3(0, 0, Mathf.Sin(Time.time + offset) * distance));
+            offset += speed;
+        }
     }
 }
