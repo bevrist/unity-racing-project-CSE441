@@ -24,7 +24,7 @@ public class AIController : VehicleController
     {
         if (Vector3.Distance(myVehicle.transform.position, checkpoints[cCheckpoint].transform.position) <= 3.0f)
         {
-            Debug.Log("Changing checkpoints: " + cCheckpoint);
+            //Debug.Log("Changing checkpoints: " + cCheckpoint);    //commented to avoid logspam
             cCheckpoint++;
             if (cCheckpoint >= checkpoints.Length)
                 cCheckpoint = 0;
@@ -33,7 +33,7 @@ public class AIController : VehicleController
         }
         else
         {
-            Debug.Log("Changing Corner");
+            //Debug.Log("Changing Corner"); //commented to avoid logspam
             cPath++;
             //SetPath(myVehicle.transform.position, checkpoints[cCheckpoint].transform.position);
         }

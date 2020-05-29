@@ -36,6 +36,6 @@ public class CheckpointUX : MonoBehaviour
 
     void LapCounter(){
         //this can be used to update the lap counter gui or whatever
-        Debug.Log("Laps: " + playerCS.currentLapNumber + " CP: " + playerCS.currentCheckpointInt);  //FIXME
+        //Debug.Log("Laps: " + playerCS.currentLapNumber + " CP: " + playerCS.currentCheckpointInt);  //FIXME
     }
 }
