@@ -7,8 +7,9 @@ public class PlayerUI : MonoBehaviour
 {
     private CheckpointSystemVehicle pCheckpoint;
 
+    public Image lapCounter;
     public GameObject player;
-    public Text LapMonitor;
+    public Sprite[] sprites;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,11 @@ public class PlayerUI : MonoBehaviour
 
     private void Update()
     {
-        LapMonitor.text = pCheckpoint.currentLapNumber + "/3";
+        if(sprites[pCheckpoint.currentLapNumber] != null && lapCounter.sprite != sprites[pCheckpoint.currentLapNumber])
+            lapCounter.sprite = sprites[pCheckpoint.currentLapNumber];
+        else if (pCheckpoint.currentLapNumber >= 3)
+        {
+            
+        }
     }
 }

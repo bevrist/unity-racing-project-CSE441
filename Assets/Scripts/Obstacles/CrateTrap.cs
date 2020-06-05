@@ -5,6 +5,7 @@ using UnityEngine;
 public class CrateTrap : MonoBehaviour, ITrap
 {
     private BallKartMovement vehicle;
+    public AudioSource audioSource;
 
     void OnTriggerEnter(Collider other)
     {
@@ -14,6 +15,7 @@ public class CrateTrap : MonoBehaviour, ITrap
             vehicle.rb.velocity = Vector3.zero;
             InvokeRepeating("SpinAround", 0, 0.001f);
             Invoke("Kill", 0.15f);
+            audioSource.Play();
         }
     }
 
