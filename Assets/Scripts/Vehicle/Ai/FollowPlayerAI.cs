@@ -5,6 +5,7 @@ using UnityEngine;
 public class FollowPlayerAI : VehicleController
 {
     private GameObject playerVehicle;
+    public int followDistance = 10;
 
     void Start()
     {
@@ -18,6 +19,6 @@ public class FollowPlayerAI : VehicleController
         Vector3 lookPos = myVehicle.transform.InverseTransformPoint(playerVehicle.transform.position);
 
         SetTurnDirection(Mathf.Clamp(lookPos.x, -1, 1));    //always look towards player
-        SetForwardSpeed(Mathf.Clamp((lookPos.z-10)/10, -1, 1)); //try to always be 10 units away from player
+        SetForwardSpeed(Mathf.Clamp((lookPos.z-followDistance) / followDistance, -1, 1)); //try to always be 10 units away from player
     }
 }

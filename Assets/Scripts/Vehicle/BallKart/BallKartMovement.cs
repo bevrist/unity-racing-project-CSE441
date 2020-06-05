@@ -16,7 +16,7 @@ public class BallKartMovement : MonoBehaviour, IVehicleControllable, ICheckpoint
     private float turnDirection = 0;
     private float forwardSpeed = 0;
 
-    private Rigidbody rb;
+    public Rigidbody rb;
 
     void Start()
     {   // create sphere to simulate physics on, adjust some paramaters of sphere, and store Rigidbody in variable
@@ -31,6 +31,10 @@ public class BallKartMovement : MonoBehaviour, IVehicleControllable, ICheckpoint
         GameObject parentObj = new GameObject(gameObject.name);
         gameObject.transform.parent = parentObj.transform;
         rb.transform.parent = parentObj.transform;
+        if (gameObject.tag == "Player")
+        {
+            rb.gameObject.tag = "Player";
+        }
     }
 
     void Update()
