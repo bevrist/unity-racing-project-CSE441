@@ -4693,7 +4693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trapList:
   - {fileID: 7117281233418577798, guid: 6e8bdf545b1494094b1193bb0b6e61eb, type: 3}
-  - {fileID: 5480749316995106636, guid: e33a6954ba6ea2640a45f4605c452738, type: 3}
+  - {fileID: 7529464233002355352, guid: e33a6954ba6ea2640a45f4605c452738, type: 3}
 --- !u!4 &726858731
 Transform:
   m_ObjectHideFlags: 0

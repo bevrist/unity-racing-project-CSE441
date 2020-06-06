@@ -16,6 +16,7 @@ public class SpringTrap : MonoBehaviour, ITrap
             vehicle.rb.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
             InvokeRepeating("StopMoving",0,0.001f);
             Invoke("Kill", 2.0f);
+            transform.parent.GetComponent<Animation>().Play();
             audioSource.Play();
         }
     }
@@ -33,6 +34,6 @@ public class SpringTrap : MonoBehaviour, ITrap
 
     void Kill()
     {
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 }
