@@ -32,8 +32,9 @@ public class SpawnObstacles : MonoBehaviour
             int rand = Random.Range(0, spawnPoints.Count);
             TrapSpawn currentItem = spawnPoints[rand];
             spawnPoints.RemoveAt(rand);
+            GameObject spawnObject = trapList[Random.Range(0, trapList.Length)];
 
-            Instantiate(trapList[Random.Range(0,trapList.Length)], currentItem.transform.position, Quaternion.Euler(0,Random.Range(0,180),0));
+            Instantiate(spawnObject, currentItem.transform.position, Quaternion.Euler(spawnObject.transform.rotation.eulerAngles.x,Random.Range(0,180),spawnObject.transform.rotation.eulerAngles.z));
         }
     }
 }
