@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/TestScenes/MainMenu.unity
     guid: b7fb817c88becfc4495f8426120c4ebc
   - enabled: 1
-    path: Assets/Scenes/EpicTrack.unity
-    guid: 92538478b59460e43991efa0658a071e
-  - enabled: 1
-    path: Assets/Scenes/TestScenes/TestTrack.unity
-    guid: ce766a04471baf64bbda1d21ebb09dd9
+    path: Assets/Scenes/Track Paul Copy.unity
+    guid: 7a76e439d0e7ae6489c094dc70ddc369
   m_configObjects: {}

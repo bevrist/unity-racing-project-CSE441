@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpringTrap : MonoBehaviour, ITrap
 {
     private BallKartMovement vehicle;
+    public AudioSource audioSource;
 
     void OnTriggerEnter(Collider other)
     {
@@ -15,6 +16,7 @@ public class SpringTrap : MonoBehaviour, ITrap
             vehicle.rb.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
             InvokeRepeating("StopMoving",0,0.001f);
             Invoke("Kill", 2.0f);
+            audioSource.Play();
         }
     }
 
