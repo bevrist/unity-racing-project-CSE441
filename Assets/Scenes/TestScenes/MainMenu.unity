@@ -857,15 +857,18 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.2
-  m_Text: 'Brett Evrist....................................Lead Programmer
+  m_Text: 'Alex Rodriguez....................................Team Lead
 
-    Ultralogic
-    .............................................
+    Brett
+    Evrist.......................................Programmer
 
-    Bobby L ...............................................
+    Bobby Laudeman................................Track
+    Design
 
-    Paul
-    Siemieniewski..........................UI, Artist'
+    Paul Siemieniewski..........................UI, Artist
+
+
+'
 --- !u!222 &520700860
 CanvasRenderer:
   m_ObjectHideFlags: 0
